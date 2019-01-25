@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 // import axios from 'axios';
 
+// ---------------------------------
+
+// Note: I was attempting to keep state on the form in here since it's how the project was set up for us, but I removed it. That's why this is all commented out.
+
 class SmurfForm extends Component {
   // constructor(props) {
   //   super(props);

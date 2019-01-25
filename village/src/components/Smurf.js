@@ -3,6 +3,10 @@ import React from "react";
 
 // import SmurfProfile from './SmurfProfile';
 
+// ---------------------------------
+
+// Note: The comments in this file are related to the ones in SmurfProfile - this was part of the React Router Stretch Problem. It wasn't rendering properly.
+
 const Smurf = props => {
   return (
     <div>
