@@ -19,7 +19,8 @@ class App extends Component {
         name: "",
         age: "",
         height: ""
-      }
+      },
+      update: false
     };
   }
 
@@ -38,8 +39,7 @@ class App extends Component {
     });
   };
 
-  addSmurf = event => {
-    event.preventDefault();
+  addSmurf = () => {
     axios.post(serverURL, this.state.smurf)
       .then(res => {
         this.setState({
@@ -48,7 +48,8 @@ class App extends Component {
             name: "",
             age: "",
             height: ""
-          }
+          },
+          update: false
         });
         this.props.history.push("/");
       })
@@ -62,6 +63,30 @@ class App extends Component {
       .catch(err => console.log(err));
   }
 
+  showUpdateForm = (event, id) => {
+    event.preventDefault();
+    this.setState({
+      update: true,
+      smurf: this.state.smurfs.find(smurf => smurf.id === id)
+    });
+    this.props.history.push("/smurf-form");
+  }
+
+  updateSmurfInfo = () => {
+    axios.put(`${serverURL}/${this.state.smurf.id}`, this.state.smurf)
+      .then(res => {
+        this.setState({
+          smurfs: res.data,
+          smurf: {
+            name: "",
+            age: "",
+            height: ""
+          }
+        })
+      })
+      .catch(err => console.log(err));
+  }
+
   render() {
     return (
       <div className="App">
@@ -72,7 +97,9 @@ class App extends Component {
           serverURL={serverURL}
           addSmurf={this.addSmurf}
           handleInputChange={this.handleInputChange}
-          smurf={this.state.smurf}  
+          smurf={this.state.smurf}
+          update={this.state.update}
+          updateSmurfInfo={this.updateSmurfInfo}
         />} 
       />
         <Route path="/" render={props => 
@@ -80,6 +107,8 @@ class App extends Component {
             {...props}
             smurfs={this.state.smurfs}
             deleteSmurf={this.deleteSmurf}
+            update={this.state.update}
+            showUpdateForm={this.showUpdateForm}
           />}
         />
         {/* <Route path="/smurf/:id" render={props => 

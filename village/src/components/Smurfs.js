@@ -25,7 +25,7 @@ class Smurfs extends Component {
               />
               </Link>
 
-              <Route path={`/${smurf.id}`} render={properties => <SmurfProfile {...properties} smurf={smurf} deleteSmurf={this.props.deleteSmurf} />}/>
+              <Route path={`/${smurf.id}`} render={properties => <SmurfProfile {...properties} smurf={smurf} deleteSmurf={this.props.deleteSmurf} showUpdateForm={this.props.showUpdateForm} />}/>
               </div>
 
             );

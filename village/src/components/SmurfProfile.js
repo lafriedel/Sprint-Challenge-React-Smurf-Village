@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class SmurfProfile extends React.Component {
     // constructor(props) {
@@ -25,9 +26,10 @@ class SmurfProfile extends React.Component {
         return (
             <div>
                 {/* <p>{this.state.thisSmurf.name}</p> */}
-                <p>{this.props.age}</p>
-                <p>{this.props.height}</p>
+                <p>{this.props.smurf.age} smurf years old</p>
+                <p>{this.props.smurf.height} tall</p>
                 <button onClick={e => this.props.deleteSmurf(e, this.props.smurf.id)}>Delete</button>
+                <button onClick={e => this.props.showUpdateForm(e, this.props.smurf.id)}>Update</button>
             </div>
         )
     }
