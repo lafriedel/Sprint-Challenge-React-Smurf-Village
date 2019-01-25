@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const NavBar = props => {
     return (
-        <div>
+        <div className="Navigation">
             <Link to="/smurf-form">Add Smurf</Link>
             <Link to="/">Back to Village</Link>
         </div>
