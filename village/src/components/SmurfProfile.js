@@ -21,13 +21,13 @@ class SmurfProfile extends React.Component {
    
     render() {
         // console.log(this.state.thisSmurf);
-        console.log(this.props);
+        console.log(this.props.smurf.id);
         return (
             <div>
                 {/* <p>{this.state.thisSmurf.name}</p> */}
                 <p>{this.props.age}</p>
                 <p>{this.props.height}</p>
-                <button></button>
+                <button onClick={e => this.props.deleteSmurf(e, this.props.smurf.id)}>Delete</button>
             </div>
         )
     }

@@ -57,7 +57,9 @@ class App extends Component {
 
   deleteSmurf = (event, id) => {
     event.preventDefault();
-    
+    axios.delete(`${serverURL}/${id}`)
+      .then(res => this.setState({ smurfs: res.data }))
+      .catch(err => console.log(err));
   }
 
   render() {
