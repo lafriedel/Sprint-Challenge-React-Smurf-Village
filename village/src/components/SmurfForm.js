@@ -2,17 +2,17 @@ import React, { Component } from 'react';
 // import axios from 'axios';
 
 class SmurfForm extends Component {
-  constructor(props) {
-    super(props);
-    // this.state = {
-    //   smurf: {
-    //     name: '',
-    //     age: '',
-    //     height: ''
-    //   }
+  // constructor(props) {
+  //   super(props);
+  //   // this.state = {
+  //   //   smurf: {
+  //   //     name: '',
+  //   //     age: '',
+  //   //     height: ''
+  //   //   }
 
-    // };
-  }
+  //   // };
+  // }
 
   // addSmurf = event => {
   //   event.preventDefault();

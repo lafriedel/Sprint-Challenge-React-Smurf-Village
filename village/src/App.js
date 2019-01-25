@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Route, Link } from 'react-router-dom';
 
 import './App.css';
 import SmurfForm from './components/SmurfForm';
 import Smurfs from './components/Smurfs';
+import NavBar from './components/NavBar';
 
 const serverURL = "http://localhost:3333/smurfs";
 
@@ -42,7 +44,12 @@ class App extends Component {
       .then(res => {
         console.log(res);
         this.setState({
-          smurfs: res.data
+          smurfs: res.data,
+          smurf: {
+            name: "",
+            age: "",
+            height: ""
+          }
         })
       })
       .catch(err => console.log(err));
@@ -59,13 +66,22 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <SmurfForm 
+      <NavBar />
+      <Route path="/smurf-form" render={props => 
+        <SmurfForm
+          {...props}
           serverURL={serverURL}
           addSmurf={this.addSmurf}
           handleInputChange={this.handleInputChange}
-          smurf={this.state.smurf}
+          smurf={this.state.smurf}  
+        />} 
+      />
+        <Route path="/" render={props => 
+          <Smurfs 
+            {...props}
+            smurfs={this.state.smurfs}
+          />}
         />
-        <Smurfs smurfs={this.state.smurfs} />
       </div>
     );
   }
